@@ -5,13 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        },
+        {
             "type": "pwa-node",
             "request": "launch",
             "name": "JS: Current File",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
-            "program": "${workspaceFolder}\\mutations.js"
+            "program": "${file}",
+            "console": "internalConsole"
         }
     ]
 }
