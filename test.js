@@ -1,8 +1,5 @@
-function add(x) {
-  // Only change code below this line
-  const curried = x => y => z => x+y+z
-  return curried
-  // Only change code above this line
+function test(a,b){
+  return (a.indexOf(b))
+  
 }
-
-console.log(add(10)(20)(30))
+console.log(test([1],[1]))
