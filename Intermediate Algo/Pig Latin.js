@@ -1,21 +1,48 @@
 function translatePigLatin(str) {
-    let voules = ['a','e','i','o','u']
-    let index =  []  //  used i location of voule
-    let strSplit = str.split('')
-        for (let i = 0; i < strSplit.length; i++){
-            for (let j = 0; j < voules.length; j++){
-                if (strSplit[i].includes(voules[j])){
-                    index.push(i)
-                }
-            }
-        }
-    if(strSplit[0].includes(voules)){
-        return false
-    }
-    
+    let vowel = /[aeiou]/gi
+    let result = ''
+    if (str[0].match(vowel)){
+        result = str + 'way';
+    } else if(str[0].match(vowel) === null){
+        result = str + 'ay';
+    }else {
+    // Find how many consonants before the first vowel.
+    var vowelIndice = str.indexOf(str.match(regex)[0]);
+
+    // Take the string from the first vowel to the last char
+    // then add the consonants that were previously omitted and add the ending.
+    pigLatin = str.substr(vowelIndice) + str.substr(0, vowelIndice) + "ay";
+  }
     return result;
 }
  
 
   
   console.log(translatePigLatin("consonant"))
+  console.log(translatePigLatin("california"))
+
+  /*
+  function translatePigLatin(str) {
+  // Create variables to be used
+  var pigLatin = "";
+  var regex = /[aeiou]/gi;
+
+  // Check if the first character is a vowel
+  if (str[0].match(regex)) {
+    pigLatin = str + "way";
+  } else if (str.match(regex) === null) {
+    // Check if the string contains only consonants
+    pigLatin = str + "ay";
+  } else {
+    // Find how many consonants before the first vowel.
+    var vowelIndice = str.indexOf(str.match(regex)[0]);
+
+    // Take the string from the first vowel to the last char
+    // then add the consonants that were previously omitted and add the ending.
+    pigLatin = str.substr(vowelIndice) + str.substr(0, vowelIndice) + "ay";
+  }
+
+  return pigLatin;
+}
+
+*/
