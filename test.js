@@ -1,5 +1,10 @@
-function test(a,b){
-  return (a.indexOf(b))
-  
+function translatePigLatin(str) {
+  let voules = ['a','e','i','o','u']
+  str = str.split('')
+  let match = str.match(voules)
+  return match;
 }
-console.log(test([1],[1]))
+
+
+
+console.log(translatePigLatin("consonant"))
