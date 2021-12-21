@@ -1,16 +1,26 @@
 function whatIsInAName(collection, source) {
-    let arr = []
-    for (let i = 0; i < collection.length; i++){
-        if (collection[i].last == source.last){
-            arr.push(collection[i])
-        }else{
-            arr.push(false)
+
+    //  making callback function for filter
+    function searchKeys(sourceKeys){
+        let sourceKeys = Object.keys(source)
+        let colKeys = Object.keys(collection)
+        for (let i = 0; i < sourceKeys.length; i++){
+            
         }
     }
-    return arr
+    return collection.filter(searchKeys)
+    
 }
-console.log(JSON.stringify(whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" })))
-console.log(JSON.stringify([{ "apple": 1 }, { "apple": 1 }, { "apple": 1, "bat": 2 }], { "apple": 1 }))
+
+
+
+
+
+
+
+
+// console.log(JSON.stringify(whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" })))
+// console.log(JSON.stringify([{ "apple": 1 }, { "apple": 1 }, { "apple": 1, "bat": 2 }], { "apple": 1 }))
 console.log(JSON.stringify(whatIsInAName([{ "apple": 1, "bat": 2 }, { "apple": 1 }, { "apple": 1, "bat": 2, "cookie": 2 }, { "bat":2 }], { "apple": 1, "bat": 2 })))
   
 /*
@@ -37,3 +47,5 @@ function whatIsInAName (collection, source) {
     })
   }
   */
+
+  [{ "apple": 1, "bat": 2 }, { "apple": 1, "bat": 2, "cookie": 2 }]
