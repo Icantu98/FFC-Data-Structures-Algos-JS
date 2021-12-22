@@ -1,10 +1,18 @@
 function uniteUnique(arr) {
     let arrays = Object.values(arguments) // get out all of the arrays from input since only the first one was outputing
-    let arraysCon = arrays[0].concat(arrays[1]).concat(arrays[2])
-    results = [] // array to push numbers to
-    arrays.filter(nums => nums != nums) // Thinking of using a filter to take out numbers that have already be used
-    
-    result = arraysCon
+	let unitedArrays = []
+		for(let i = 0; i < arrays.length; i++){
+			unitedArrays.push(arrays[i])
+			// console.log((JSON.stringify(unitedArrays)))
+		}
+	let result = []
+		for (let i = 0; i < unitedArrays.length; i++){
+			for(let j = 0; j < unitedArrays[i].length; j++){
+				if(result.indexOf(j) == -1){
+					result.push(unitedArrays[i][j])
+				}
+			}
+		}
     return result;
   }
   
