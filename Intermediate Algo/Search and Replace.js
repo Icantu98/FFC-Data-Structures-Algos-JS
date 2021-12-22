@@ -20,9 +20,9 @@ function myReplace(str, before, after) {
     return result.join(' ');
   }
   
-  //console.log(myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped"))
+  console.log(myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped"))
   console.log(myReplace("He is Sleeping on the couch", "Sleeping", "sitting"))
-
+  console.log(myReplace("I think we should look up there", "up", "Down"))
 
   /*
 Perform a search and replace on the sentence using the arguments provided and return the new sentence.
