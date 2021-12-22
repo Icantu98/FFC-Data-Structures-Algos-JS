@@ -1,14 +1,9 @@
 function uniteUnique(arr) {
     let arrays = Object.values(arguments) // get out all of the arrays from input since only the first one was outputing
-	/*let unitedArrays = []
-		for(let i = 0; i < arrays.length; i++){
-			unitedArrays.push(arrays[i])
-			// console.log((JSON.stringify(unitedArrays)))
-		}*/
 	let result = []
-		for (let i = 0; i < arrays.length; i++){
-			for(let j = 0; j < arrays[i].length; j++){
-				if(result.indexOf(j) === -1){
+		for (let i = 0; i < arrays.length; i++){ // cycle through arrays
+			for(let j = 0; j < arrays[i].length; j++){ // cycle through elements of arrays
+				if(result.indexOf(arrays[i][j]) === -1){ // if element missing *results* push
 					result.push(arrays[i][j])
 				}
 			}
