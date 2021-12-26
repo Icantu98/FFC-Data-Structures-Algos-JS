@@ -1,27 +1,22 @@
 function palindrome(str) {
-	// trying to make callback function for filter.
-	function cleanStr(x){
-		x = [x]
-	}
-	let array1 = str.filter(char => ) // clean data
+	let cleaner = /[\s_,\.\:\-\(\)\/\|]|/g
+	let array1 = str.replace(cleaner, '').toLowerCase() // clean data
 	let array2 = [] // for reversed string
-//   make a .push for loop after you clean the data. then check it against the original clean compressed string. then output true/false
-
-
-	return array1; // for debuging
+	// return array1 // for debuging
 
 	// reverse string loop
 	for (let i = 0; i < array1.length; i++){
 		array2.unshift(array1[i])
 	}
+
 	array2 = array2.join('') // turns array into string
+
 	// Check if arr1 and arr2 are the same.
 	if (array1 == array2){
 		return true
 	}else{
 		return false
 	}
-
   }
   
   console.log(palindrome("eye"))
