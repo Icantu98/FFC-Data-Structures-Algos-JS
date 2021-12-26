@@ -24,11 +24,11 @@ function convertToRoman(num) {
     } if(num >=1){
         remainder[6] = Math.floor(num/1)
     }
-
-    
-    return remainder;
+    // return remainder;// for testing
 
     // make a string that multiplies with array?? need to fix for below keyvalues first
+    let romanNum = 'M'
+    return romanNum
 }
 
 
