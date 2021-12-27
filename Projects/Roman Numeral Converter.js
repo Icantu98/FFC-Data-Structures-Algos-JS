@@ -1,28 +1,27 @@
 function convertToRoman(num) {
     let remainder = [0,0,0,0,0,0,0]; // sets multipliers for each rank
-    // fill out the remainders
+
+    // function to loop througb remainderIndex and fill values
+    function remainderFill(remainderIndex,romanDivisor){
+        remainder[remainderIndex] = Math.floor(num/romanDivisor)
+        num = num - (romanDivisor*remainder[remainderIndex])
+    }
+
+     // fill out the remainders
     if(num >= 1000){
-        // find how many times 1000 into num
-        remainder[0] = Math.floor(num/1000)
-        // need to subtract 1000x from num to get next values
-        num = num - (1000*remainder[0])
+        remainderFill(0,1000)
     } if(num >= 500){
-        remainder[1] = Math.floor(num/500)
-        num = num - (500*remainder[1])
+        remainderFill(1,500)
     } if(num >= 100){
-        remainder[2] = Math.floor(num/100)
-        num = num - (100*remainder[2])
+        remainderFill(2,100)
     } if(num >= 50){
-        remainder[3] = Math.floor(num/50)
-        num = num - (50*remainder[3])
+        remainderFill(3,50)
     } if(num >= 10){
-        remainder[4] = Math.floor(num/10);
-        num = num - (10*remainder[4])
+        remainderFill(4,10)
     } if(num >= 5){
-        remainder[5] = Math.floor(num/5)
-        num = num - (5*remainder[5])
+        remainderFill(5,5)
     } if(num >=1){
-        remainder[6] = Math.floor(num/1)
+        remainderFill(6,1)
     }
     // return remainder;// for testing
 
@@ -31,6 +30,9 @@ function convertToRoman(num) {
 
     // Function for string writring
     function dec2Rome(remainderIndex,romanNumeralRank){
+        if(remainderIndex == 4){
+            // fix remainderIndexes and flip string
+        }
         while(remainder[remainderIndex] > 0){
             romanNum = romanNum.concat(romanNumeralRank)
             remainder[remainderIndex] -= 1
@@ -39,6 +41,18 @@ function convertToRoman(num) {
     let romanNum = ''
     if(remainder[0] >= 1){
         dec2Rome(0,'M')
+    }if(remainder[1] >=1){
+        dec2Rome(1,'D')
+    }if(remainder[2] >=1){
+        dec2Rome(2,'C')
+    }if(remainder[3] >=1){
+        dec2Rome(3,'L')
+    }if(remainder[4] >=1){
+        dec2Rome(4,'X')
+    }if(remainder[5] >=1){
+        dec2Rome(5,'V')
+    }if(remainder[6] >=1){
+        dec2Rome(6,'I')
     }
 
     return romanNum
@@ -51,8 +65,8 @@ function convertToRoman(num) {
 //    console.log(convertToRoman(44))
 //    console.log(convertToRoman(69))
 //    console.log(convertToRoman(75))
-//    console.log(convertToRoman(99))
-//    console.log(convertToRoman(111))
+   console.log(convertToRoman(99))
+   console.log(convertToRoman(111))
    console.log(convertToRoman(2014))
    
 /* 
