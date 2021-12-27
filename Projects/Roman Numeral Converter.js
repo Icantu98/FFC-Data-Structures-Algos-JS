@@ -24,22 +24,30 @@ function convertToRoman(num) {
     } if(num >=1){
         remainder[6] = Math.floor(num/1)
     }
-    return remainder;// for testing
+    // return remainder;// for testing
+
 	//	YOU HAVE TO REVERSE RANKS FOR 4'S!!!
     // make a string that multiplies with array?? need to fix for below keyvalues first
-    let romanNum = 'M'
+    let romanNum = ''
+    if(remainder[0] >= 1){
+        while(remainder[0] > 0){
+            romanNum = romanNum.concat('M')
+            remainder[0] -= 1
+        }
+    
+    }
     return romanNum
 }
 
 
-   console.log(convertToRoman(2))
-   console.log(convertToRoman(4))
-   console.log(convertToRoman(6))
-   console.log(convertToRoman(44))
-   console.log(convertToRoman(69))
-   console.log(convertToRoman(75))
-   console.log(convertToRoman(99))
-   console.log(convertToRoman(111))
+//    console.log(convertToRoman(2))
+//    console.log(convertToRoman(4))
+//    console.log(convertToRoman(6))
+//    console.log(convertToRoman(44))
+//    console.log(convertToRoman(69))
+//    console.log(convertToRoman(75))
+//    console.log(convertToRoman(99))
+//    console.log(convertToRoman(111))
    console.log(convertToRoman(2014))
    
 /* 
