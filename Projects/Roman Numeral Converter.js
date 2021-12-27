@@ -28,14 +28,19 @@ function convertToRoman(num) {
 
 	//	YOU HAVE TO REVERSE RANKS FOR 4'S!!!
     // make a string that multiplies with array?? need to fix for below keyvalues first
+
+    // Function for string writring
+    function dec2Rome(remainderIndex,romanNumeralRank){
+        while(remainder[remainderIndex] > 0){
+            romanNum = romanNum.concat(romanNumeralRank)
+            remainder[remainderIndex] -= 1
+        }
+    }
     let romanNum = ''
     if(remainder[0] >= 1){
-        while(remainder[0] > 0){
-            romanNum = romanNum.concat('M')
-            remainder[0] -= 1
-        }
-    
+        dec2Rome(0,'M')
     }
+
     return romanNum
 }
 
