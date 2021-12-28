@@ -1,6 +1,6 @@
 function convertToRoman(num) {
     let remainder = [0,0,0,0,0,0,0]; // sets multipliers for each rank
-
+    let rank = ['M','D','C','L','X','V','I'] // ranks for each Roman
     // function to loop througb remainderIndex and fill values
     function remainderFill(remainderIndex,romanDivisor){
         remainder[remainderIndex] = Math.floor(num/romanDivisor)
@@ -29,45 +29,54 @@ function convertToRoman(num) {
     // make a string that multiplies with array?? need to fix for below keyvalues first
 
     // Function for string writring
-    function dec2Rome(remainderIndex,romanNumeralRank){
-        if(remainderIndex == 4){
-            // fix remainderIndexes and flip string
+    function dec2Rome(remainderIndex,rankIndex){
+        if(remainder[remainderIndex] == 4 || remainder[remainderIndex]){
+            // 4 work backwards? Subtract 5? divid next rank by 2?
+            romanNum.push(rank[rankIndex])
+            romanNum.push(rank[rankIndex-1])
+            remainder[remainderIndex+1] =0
+        }if(remainder[remainderIndex] > 0 && remainder[remainderIndex]%2 == 1){
+            console.log(9)
         }
-        while(remainder[remainderIndex] > 0){
-            romanNum = romanNum.concat(romanNumeralRank)
-            remainder[remainderIndex] -= 1
+        else{
+            while(remainder[remainderIndex] > 0){
+                romanNum.push(rank[rankIndex])
+                remainder[remainderIndex] -= 1
+            }
         }
+
     }
-    let romanNum = ''
+    let romanNum = []
     if(remainder[0] >= 1){
-        dec2Rome(0,'M')
+        dec2Rome(0,0)
     }if(remainder[1] >=1){
-        dec2Rome(1,'D')
+        dec2Rome(1,1)
     }if(remainder[2] >=1){
-        dec2Rome(2,'C')
+        dec2Rome(2,2)
     }if(remainder[3] >=1){
-        dec2Rome(3,'L')
+        dec2Rome(3,3)
     }if(remainder[4] >=1){
-        dec2Rome(4,'X')
+        dec2Rome(4,4)
     }if(remainder[5] >=1){
-        dec2Rome(5,'V')
+        dec2Rome(5,5)
     }if(remainder[6] >=1){
-        dec2Rome(6,'I')
+        dec2Rome(6,6)
     }
 
-    return romanNum
+    return romanNum.join('')
 }
 
 
-//    console.log(convertToRoman(2))
-//    console.log(convertToRoman(4))
-//    console.log(convertToRoman(6))
-//    console.log(convertToRoman(44))
-//    console.log(convertToRoman(69))
+   
+   console.log(convertToRoman(4))
+//    console.log(convertToRoman(7))
+   console.log(convertToRoman(9))
+//    console.log(convertToRoman(39))
+//    console.log(convertToRoman(49))
 //    console.log(convertToRoman(75))
-   console.log(convertToRoman(99))
-   console.log(convertToRoman(111))
-   console.log(convertToRoman(2014))
+//    console.log(convertToRoman(99))
+//    console.log(convertToRoman(111))
+//    console.log(convertToRoman(2014))
    
 /* 
 Convert the given number into a roman numeral.
