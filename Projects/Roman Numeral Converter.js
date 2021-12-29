@@ -30,21 +30,22 @@ function convertToRoman(num) {
 
     // Function for string writring
     function dec2Rome(remainderIndex,rankIndex){
-        if(remainder[remainderIndex] == 4 || remainder[remainderIndex]){
-            // 4 work backwards? Subtract 5? divid next rank by 2?
-            romanNum.push(rank[rankIndex])
-            romanNum.push(rank[rankIndex-1])
-            remainder[remainderIndex+1] =0
-        }if(remainder[remainderIndex] > 0 && remainder[remainderIndex]%2 == 1){
-            console.log(9)
-        }
-        else{
-            while(remainder[remainderIndex] > 0){
+        let numIndex = []
+        switch(remainder[remainderIndex]){
+            case 4:
                 romanNum.push(rank[rankIndex])
-                remainder[remainderIndex] -= 1
-            }
+                romanNum.push(rank[rankIndex-1])
+                remainder[remainderIndex+1] = 0
+                break;
+            case 9: // This case will never exist cause its decimal not romannum rank
+                console.log(9)
+                break;
+            default:
+                while(remainder[remainderIndex] > 0){
+                    romanNum.push(rank[rankIndex])
+                    remainder[remainderIndex] -= 1
+                }
         }
-
     }
     let romanNum = []
     if(remainder[0] >= 1){
@@ -69,10 +70,10 @@ function convertToRoman(num) {
 
    
    console.log(convertToRoman(4))
-//    console.log(convertToRoman(7))
+   console.log(convertToRoman(7))
    console.log(convertToRoman(9))
-//    console.log(convertToRoman(39))
-//    console.log(convertToRoman(49))
+   console.log(convertToRoman(39))
+   console.log(convertToRoman(49))
 //    console.log(convertToRoman(75))
 //    console.log(convertToRoman(99))
 //    console.log(convertToRoman(111))
