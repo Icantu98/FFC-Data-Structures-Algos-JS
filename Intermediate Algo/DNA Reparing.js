@@ -22,7 +22,7 @@ function pairElement(str) {
             // result.push('')
         }
     }
-    // pulled this from Chunky_Monkey.js basic algos
+    // pulled this from Chunky_Monkey.js basic algos.
     for (let i = 0; i < result.length; i+=2){
         dna.push(result.slice(i,2+i))
     }
