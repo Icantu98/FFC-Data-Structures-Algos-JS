@@ -14,7 +14,7 @@ function convertToRoman(num) {
         V:5,
         IV:4,
         I:1
-    }
+    } // keys are the roman numbers so you can filter through the values and push keys into romanNum as they appear
     for(let i in lookup){
         while (num >= lookup[i]){
             romanNum += i;
@@ -34,7 +34,7 @@ function convertToRoman(num) {
 //    console.log(convertToRoman(75))
 //    console.log(convertToRoman(99))
 //    console.log(convertToRoman(111))
-//    console.log(convertToRoman(2014))
+   console.log(convertToRoman(2014))
    
 /* 
 Convert the given number into a roman numeral.
