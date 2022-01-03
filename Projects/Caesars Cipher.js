@@ -1,6 +1,14 @@
 function rot13(str) {
-	
-	return str;
+	let splitStr = str.split(' ')
+	let result = ''
+	for (let i = 0; i < splitStr.length; i++){
+		for(let j = 0; j < splitStr[i].length; j ++){
+			let charcode = (splitStr[i][j].charCodeAt()) + 13;
+			result += String.fromCharCode(charcode)
+		}
+	}
+	// result = String.fromCharCode(str.charCodeAt(0) + 13)
+	return result;
   }
   
   console.log(rot13("SERR PBQR PNZC"))
