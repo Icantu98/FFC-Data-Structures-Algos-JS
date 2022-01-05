@@ -1,17 +1,27 @@
 function rot13(str) {
 	let splitStr = str.split(' ')
 	let result = ''
+	// A = 65 : Z = 90
 	for (let i = 0; i < splitStr.length; i++){
 		for(let j = 0; j < splitStr[i].length; j ++){
-			let charcode = (splitStr[i][j].charCodeAt()) + 13;
-			result += String.fromCharCode(charcode)
+			if(splitStr[i][j].charCodeAt() > 77){
+				let charcode = (splitStr[i][j].charCodeAt()) + 13 - 26;
+				result += String.fromCharCode(charcode)
+			}else if(splitStr[i][j].charCodeAt() > 64){
+				let charcode = (splitStr[i][j].charCodeAt()) + 13;
+				result += String.fromCharCode(charcode)
+			}else{
+				result += splitStr[i][j]
+			}
 		}
+		result += ' '
 	}
-	// result = String.fromCharCode(str.charCodeAt(0) + 13)
 	return result;
   }
   
   console.log(rot13("SERR PBQR PNZC"))
+  console.log(rot13("SERR CVMMN!"))
+  console.log(rot13("SERR YBIR?"))
 
   /* 
 One of the simplest and most widely known ciphers is a Caesar cipher, also known as a shift cipher. In a shift cipher the meanings of the letters are shifted by some set amount.
