@@ -24,17 +24,16 @@ function convertToRoman(num) {
     return romanNum
 }
 
-
    
-   console.log(convertToRoman(4))
-   console.log(convertToRoman(7))
-   console.log(convertToRoman(9))
-   console.log(convertToRoman(39))
-   console.log(convertToRoman(49))
-//    console.log(convertToRoman(75))
-//    console.log(convertToRoman(99))
-//    console.log(convertToRoman(111))
-   console.log(convertToRoman(2014))
+console.log(convertToRoman(4))
+console.log(convertToRoman(7))
+console.log(convertToRoman(9))
+console.log(convertToRoman(39))
+console.log(convertToRoman(49))
+console.log(convertToRoman(75))
+console.log(convertToRoman(99))
+console.log(convertToRoman(111))
+console.log(convertToRoman(2014))
    
 /* 
 Convert the given number into a roman numeral.
