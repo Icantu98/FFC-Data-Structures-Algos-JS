@@ -1,14 +1,26 @@
 function telephoneCheck(str) {
-    return true;
+	let cleaner = /[a-z\s_,\.\:\-\(\)\/\|\*\&\!\#]|/g
+	let result = str.replace(cleaner, '')
+	if (result.length > 10){
+		if (result[0] == 1){
+			return true
+		}
+		return false
+	}else if (result.length == 10){
+		return true
+	}else{
+		return false
+	}
   }
   
-  console.log(telephoneCheck("555-555-5555")) // TRUE
-  console.log(telephoneCheck("1 555-555-5555")) // TRUE
-  console.log(telephoneCheck("1 (555) 555-5555")) // TRUE
-  console.log(telephoneCheck("5555555555")) // TRUE
-  console.log(telephoneCheck("(555)555-5555")) // TRUE
-  console.log(telephoneCheck("555-5555")) // FALSE
-  console.log(telephoneCheck("1 555)555-5555")) // FALSE
+  console.log(telephoneCheck("555-555-5555")) 		// TRUE
+  console.log(telephoneCheck("1 555-555-5555")) 	// TRUE
+  console.log(telephoneCheck("1 (555) 555-5555")) 	// TRUE
+  console.log(telephoneCheck("5555555555")) 		// TRUE
+  console.log(telephoneCheck("(555)555-5555")) 		// TRUE
+  console.log(telephoneCheck("555-5555")) 			// FALSE
+  console.log(telephoneCheck("1 555)555-5555")) 	// FALSE
+  console.log(telephoneCheck("123**&!!asdf#"))		// FALSE
 
   /* 
 Return true if the passed string looks like a valid US phone number.
