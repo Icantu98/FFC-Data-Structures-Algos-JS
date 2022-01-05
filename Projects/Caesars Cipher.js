@@ -16,7 +16,7 @@ function rot13(str) {
 		}
 		result += ' '
 	}
-	return result;
+	return result.trimEnd();
   }
   
   console.log(rot13("SERR PBQR PNZC"))
