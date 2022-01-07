@@ -1,4 +1,9 @@
 function checkCashRegister(price, cash, cid) {
+	// Base state
+	let result = {
+		status: '',
+		change: []
+	}
 	const lookup ={
 		PENNY:0.01,
 		NICKEL:0.05,
@@ -10,19 +15,28 @@ function checkCashRegister(price, cash, cid) {
 		TWENTY:20,
 		"ONE HUNDRED":100
 	}
+	
+	// Check how much money in register
 	let startingCash = 0
 	for (let i in cid){
 		startingCash += cid[i][1]
 	}
 	startingCash = Math.round(startingCash*100)/100 // rount to nearest cent to fix errors
 
-	
+	// Check if there is enough money to give change
+	let cashNeeded = cash - price
+	if (cashNeeded > startingCash){
+		result.status = 'INSUFFICIENT_FUNDS'
+		return result
+	}
+
     let change;
-    return startingCash;
+    return result;
   }
   
   console.log(JSON.stringify(checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]])))
-  console.log(checkCashRegister(19.5, 20, [["PENNY", 0.01], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]))
+  console.log(JSON.stringify(checkCashRegister(19.5, 20, [["PENNY", 0.01], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]])))
+  console.log(JSON.stringify(checkCashRegister(19.5, 20, [["PENNY", 0.5], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]])))
   /* 
 Design a cash register drawer function checkCashRegister() that accepts purchase price as the first argument (price), 
 payment as the second argument (cash), and cash-in-drawer (cid) as the third argument.
