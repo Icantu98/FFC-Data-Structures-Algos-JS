@@ -1,31 +1,51 @@
 function telephoneCheck(str) {
+	if(str[0] == '-'){ // special case
+		return false
+	}
+
+	// Clean data of any extra characters
 	let cleaner = /[a-z\s_,\.\:\-\/\|\*\&\!\#]|/g
 	let result = str.replace(cleaner, '')
-	// return result
-	if (result.length > 10){ 
+	// return result.length // for testing
+
+	// Check for at least 10 numbers in str
+	if (result.length > 10){ // if the str has at least 10 numbers check through it
 		if(result.length == 11){
+			// Checking for correct country code
 			if (result[0] == 1){
 				return true
-			}else{
-				return false
 			}
+			return false
 		}else if (result.length ==12){
+			// Checking that () are in the correct place if they exist
 			if (result.charCodeAt(0) == 40 && result.charCodeAt(4) == 41){
 				return true
 			}else{
 				return false
 			}
 		}else if (result.length == 13){
-			// if(result.charCodeAt(1) == 40){}
-			return true
-		}else{
+			// Checking for correct country code when () exists
+			if(result.charCodeAt(0) == 49){
+				return true
+			}
 			return false
 		}
-	}else if (result.length == 10){
-		return true
-	}else{
 		return false
+	}else if (result.length == 10){
+		let dashes
+		// testing for correct number of dashes
+		try{
+			dashes = str.match(/-/g).length
+		}catch{
+			dashes = 0
+		}
+		// checks for too many dashes
+		if(dashes > 2){
+			return false
+		}
+		return true
 	}
+	return false
   }
   
   console.log(telephoneCheck("555-555-5555")) 		// TRUE
@@ -36,7 +56,8 @@ function telephoneCheck(str) {
   console.log(telephoneCheck("555-5555")) 			// FALSE
   console.log(telephoneCheck("1 555)555-5555")) 	// FALSE
   console.log(telephoneCheck("123**&!!asdf#"))		// FALSE
-
+  console.log(telephoneCheck("2(757)6227382"))		// FALSE
+  console.log(telephoneCheck("55 55-55-555-5"))		// FALSE
   /* 
 Return true if the passed string looks like a valid US phone number.
 
