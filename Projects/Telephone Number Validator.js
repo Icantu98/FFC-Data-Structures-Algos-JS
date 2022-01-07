@@ -1,11 +1,26 @@
 function telephoneCheck(str) {
-	let cleaner = /[a-z\s_,\.\:\-\(\)\/\|\*\&\!\#]|/g
+	let cleaner = /[a-z\s_,\.\:\-\/\|\*\&\!\#]|/g
 	let result = str.replace(cleaner, '')
-	if (result.length > 10){
-		if (result[0] == 1){
+	// return result
+	if (result.length > 10){ 
+		if(result.length == 11){
+			if (result[0] == 1){
+				return true
+			}else{
+				return false
+			}
+		}else if (result.length ==12){
+			if (result.charCodeAt(0) == 40 && result.charCodeAt(4) == 41){
+				return true
+			}else{
+				return false
+			}
+		}else if (result.length == 13){
+			// if(result.charCodeAt(1) == 40){}
 			return true
+		}else{
+			return false
 		}
-		return false
 	}else if (result.length == 10){
 		return true
 	}else{
