@@ -40,34 +40,39 @@ function checkCashRegister(price, cash, cid) {
 	let j = -1 // to get correct index to add into change 
 	for (let i in lookup){
 		j += 1
-		while (cashNeeded >= lookup[i]){
+		while (cashNeeded >= lookup[i] && cashinRegister[8-j][1] > 0){
+			// console.log(cashinRegister[8-j][1])
 			change[j][1] += lookup[i];
 			cashNeeded -= lookup[i];
-			cid[j][1] -= lookup[i];
+			cid[8-j][1] -= lookup[i];
+			cashNeeded = Math.round(cashNeeded*100)/100 // fixes rounding errors 
 		}
 	}
 	
-	// clean data
+	// clean and check data
 	let cleanChange = []
+	let cashGiven = 0
 	for(let i = 0; i < change.length; i++){
 		if(change[i][1] > 0){
 			cleanChange.push(change[i])
 		}
-		if(cashinRegister[i][1] < 0){
-			result.status = 'INSUFFICIENT_FUNDS'
-			return result
-		}
+		cashGiven += change[i][1]
 	}
-    
+	if (cashGiven < cashNeeded){
+		result.status = 'INSUFFICIENT_FUNDS'
+		return result
+	}
+	
 	result.status = 'OPEN'
 	result.change = cleanChange
    return result;
   }
   
-//   console.log(JSON.stringify(checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]])))
-//   console.log(JSON.stringify(checkCashRegister(19.5, 20, [["PENNY", 0.01], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]])))
-//   console.log(JSON.stringify(checkCashRegister(19.5, 20, [["PENNY", 0.01], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 1], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]])))
+  console.log(JSON.stringify(checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]])))
+  console.log(JSON.stringify(checkCashRegister(19.5, 20, [["PENNY", 0.01], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]])))
+  console.log(JSON.stringify(checkCashRegister(19.5, 20, [["PENNY", 0.01], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 1], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]])))
   console.log(JSON.stringify(checkCashRegister(3.26, 100, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]])))
+
   /* 
 Design a cash register drawer function checkCashRegister() that accepts purchase price as the first argument (price), 
 payment as the second argument (cash), and cash-in-drawer (cid) as the third argument.
